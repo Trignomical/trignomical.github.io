@@ -65,8 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 displayResults();
             }
-        } else {
-            alert("Too soon! Wait for the button to turn green.");
         }
     });
 
