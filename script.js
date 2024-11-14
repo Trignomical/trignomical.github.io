@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function sendResultsToSheet(reactionTimes, averageTime, musicGenre) {
-        fetch('https://script.google.com/macros/s/AKfycbz5xMU8YfGvAN_-Rf0cngHIlpw9503rMMwxD8goCNncfoS-rCCFrnjxRLibwjnf9LOQ/exec', {
+        fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbz5xMU8YfGvAN_-Rf0cngHIlpw9503rMMwxD8goCNncfoS-rCCFrnjxRLibwjnf9LOQ/exec', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ reactionTimes, averageTime, musicGenre })
