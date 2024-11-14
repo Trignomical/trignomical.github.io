@@ -18,15 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     continueButton.addEventListener("click", () => {
         headphonesScreen.classList.add("hidden");
-
-        // Show the listening screen and play music for 1 minute
         listeningScreen.classList.remove("hidden");
         playRandomMusic();
-
-        // After 1 minute, allow the user to continue
         setTimeout(() => {
             continueListeningButton.classList.remove("hidden");
-        }, 60000); // 1 minute delay
+        }, 60000);
     });
 
     continueListeningButton.addEventListener("click", () => {
@@ -75,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function getRandomDelay() {
-        return Math.floor(Math.random() * 2000) + 1000; // 1-3 seconds
+        return Math.floor(Math.random() * 2000) + 1000;
     }
 
     function displayResults() {
@@ -94,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function sendResultsToSheet(reactionTimes, averageTime, musicGenre) {
-        fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbz5xMU8YfGvAN_-Rf0cngHIlpw9503rMMwxD8goCNncfoS-rCCFrnjxRLibwjnf9LOQ/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbz5xMU8YfGvAN_-Rf0cngHIlpw9503rMMwxD8goCNncfoS-rCCFrnjxRLibwjnf9LOQ/exec', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ reactionTimes, averageTime, musicGenre })
