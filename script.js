@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         audio = new Audio(filePath);
     
         if (audio) {
-            audio.muted = false; // Ensure audio object exists
+            audio.muted = false;
             audio.play().catch(error => console.error('Playback error:', error));
         } else {
             console.error('Audio object could not be created for file:', filePath);
