@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         setTimeout(() => {
             continueListeningButton.classList.remove("hidden");
-        }, 60000);
+        }, 60);
     }
 
     function startReactionTest() {
