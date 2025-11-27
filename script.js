@@ -103,7 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function sendBPMResults() {
         const averageTime = Math.round(bpmReactionTimes.reduce((a, b) => a + b, 0) / bpmReactionTimes.length);
-        sendResultsToSheet(bpmReactionTimes, averageTime, musicBPM);
+        const bpmTimesWithMS = bpmReactionTimes.map(t => `${t} ms`);
+        sendResultsToSheet(bpmTimesWithMS, `${averageTime} ms`, musicBPM);
     }
 
     function displayResults() {
@@ -113,15 +114,15 @@ document.addEventListener("DOMContentLoaded", function () {
         let timesByBPM = {};
         reactionTimes.forEach(entry => {
             if (!timesByBPM[entry.bpm]) timesByBPM[entry.bpm] = [];
-            timesByBPM[entry.bpm].push(entry.time);
+            timesByBPM[entry.bpm].push(`${entry.time} ms`);
         });
 
         for (let bpm in timesByBPM) {
-            resultsList.innerHTML += `<h3>${bpm}</h3>`;
+            resultsList.innerHTML += `<h3>${bpm} BPM</h3>`;
             timesByBPM[bpm].forEach((time, index) => {
-                resultsList.innerHTML += `<p>Trial ${index + 1}: ${time} ms</p>`;
+                resultsList.innerHTML += `<p>Trial ${index + 1}: ${time}</p>`;
             });
-            const avg = Math.round(timesByBPM[bpm].reduce((a, b) => a + b, 0) / timesByBPM[bpm].length);
+            const avg = Math.round(timesByBPM[bpm].reduce((a,b) => a + parseInt(b),0)/timesByBPM[bpm].length);
             resultsList.innerHTML += `<p>Average Reaction Time: ${avg} ms</p>`;
         }
     }
