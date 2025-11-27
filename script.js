@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         for (let bpm in timesByBPM) {
-            resultsList.innerHTML += `<h3>${bpm} BPM</h3>`;
+            resultsList.innerHTML += `<h3>${bpm}</h3>`;
             timesByBPM[bpm].forEach((time, index) => {
                 resultsList.innerHTML += `<p>Trial ${index + 1}: ${time}</p>`;
             });
@@ -140,3 +140,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
